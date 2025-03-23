@@ -47,6 +47,21 @@ class WalletHandler {
             }
         }
 
+        void transferToken(const std::string& tokenAddress, const std::string& from, const std::string& to, uint256_t amount) {
+            if (isValidToken(tokenAddress) && wallet[from] >= amount) {
+                wallet[from] -= amount;
+                wallet[to] += amount;
+            }
+        }
+        
+        void transferERC20(const std::string& tokenAddress, const std::string& from, const std::string& to, const std::string& hexAmount) {
+            uint256_t amount(hexAmount);
+            if (isValidToken(tokenAddress) && wallet[from] >= amount) {
+                wallet[from] -= amount;
+                wallet[to] += amount;
+            }
+        }
+
         uint256_t getTokenBalance(const std::string& address){
             auto it = wallet.find(address);
             return (it != wallet.end()) ? it->second : uint256_t(0); // Return balance or 0 if not found 
