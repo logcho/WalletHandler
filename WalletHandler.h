@@ -1,5 +1,5 @@
-#ifndef WALLET_H
-#define WALLET_H
+#ifndef WALLETHANDLER_H
+#define WALLETHANDLER_H
 
 #include <unordered_map>
 #include <string>
@@ -53,4 +53,4 @@ class WalletHandler {
         }
 };
 
-#endif // WALLET_H
+#endif // WALLETHANDLER_H
